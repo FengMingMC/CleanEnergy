@@ -1,8 +1,11 @@
 package com.github.fengmingmc.cleanenergy;
 
+import com.github.fengmingmc.cleanenergy.world.item.CreativeModTabList;
 import com.github.fengmingmc.cleanenergy.world.item.ItemList;
 import com.github.fengmingmc.cleanenergy.world.level.block.BlockList;
 import com.mojang.logging.LogUtils;
+import net.industrybase.api.IndustryBaseApi;
+import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -19,6 +22,7 @@ public class CleanEnergy {
     public CleanEnergy(IEventBus modEventBus, ModContainer modContainer) {
         BlockList.BLOCK.register(modEventBus);
         ItemList.ITEM.register(modEventBus);
+        CreativeModTabList.CREATIVE_MODE_TABS.register(modEventBus);
 
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::doClientStuff);

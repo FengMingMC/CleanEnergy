@@ -47,7 +47,7 @@ runs {
         // Recommended logging level for the console
         // You can set various levels here.
         // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
-        systemProperty 'forge.logging.console.level', 'debug'
+        systemProperty 'forge.logging.console.level', 'info'
 
         modSource project.sourceSets.main
     }
@@ -108,10 +108,12 @@ dependencies {
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
     // The group id is ignored when searching -- in this case, it is "blank"
-    // implementation "blank:coolmod-${mc_version}:${coolmod_version}"
+    compileOnly files("libs/industrybase-${minecraft_version}-api-1.0-alpha.jar")
+    localRuntime files("libs/industrybase-${minecraft_version}-1.0-alpha.jar")
+//    implementation "blank:industrybase-${minecraft_version}:${coolmod_version}"
 
     // Example mod dependency using a file as dependency
-    // implementation files("libs/coolmod-${mc_version}-${coolmod_version}.jar")
+//    implementation files("libs/coolmod-${mc_version}-${coolmod_version}.jar")
 
     // Example project dependency using a sister or child project:
     // implementation project(":myproject")
