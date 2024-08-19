@@ -11,6 +11,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.slf4j.Logger;
 
 @Mod(CleanEnergy.MODID)
@@ -33,4 +34,5 @@ public class CleanEnergy {
 
     private void doClientStuff(final FMLClientSetupEvent event) {
     }
+
 }
