@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "cleanenergy:block/solar_panel"
+    }
+  }
+}

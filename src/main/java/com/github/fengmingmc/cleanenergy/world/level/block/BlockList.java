@@ -26,6 +26,7 @@ public class BlockList {
                     .lightLevel(state -> 7)
                 )
     );
+    public static final DeferredBlock<Block> SOLAR_PANEL = BLOCK.register("solar_panel",SolarPanel::new);
 
     private BlockList() {
     }
