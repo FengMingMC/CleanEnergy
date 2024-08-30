@@ -16,23 +16,23 @@ import org.slf4j.Logger;
 
 @Mod(CleanEnergy.MODID)
 public class CleanEnergy {
-    public static final String MODID = "cleanenergy";
+	public static final String MODID = "cleanenergy";
 
-    public static final Logger LOGGER = LogUtils.getLogger();
+	public static final Logger LOGGER = LogUtils.getLogger();
 
-    public CleanEnergy(IEventBus modEventBus, ModContainer modContainer) {
-        BlockList.BLOCK.register(modEventBus);
-        ItemList.ITEM.register(modEventBus);
-        CreativeModTabList.CREATIVE_MODE_TABS.register(modEventBus);
+	public CleanEnergy(IEventBus modEventBus, ModContainer modContainer) {
+		BlockList.BLOCK.register(modEventBus);
+		ItemList.ITEM.register(modEventBus);
+		CreativeModTabList.CREATIVE_MODE_TABS.register(modEventBus);
 
-        modEventBus.addListener(this::setup);
-        modEventBus.addListener(this::doClientStuff);
-    }
+		modEventBus.addListener(this::setup);
+		modEventBus.addListener(this::doClientStuff);
+	}
 
-    private void setup(final FMLCommonSetupEvent event) {
-    }
+	private void setup(final FMLCommonSetupEvent event) {
+	}
 
-    private void doClientStuff(final FMLClientSetupEvent event) {
-    }
+	private void doClientStuff(final FMLClientSetupEvent event) {
+	}
 
 }

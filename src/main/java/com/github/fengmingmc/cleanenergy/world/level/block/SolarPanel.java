@@ -23,37 +23,37 @@ import org.jetbrains.annotations.Nullable;
 
 
 public class SolarPanel extends BaseEntityBlock {
-    public static final MapCodec<SolarPanel> CODEC = simpleCodec((properties) -> new SolarPanel());
-    public static final DirectionProperty FACING = BlockStateProperties.FACING;
+	public static final MapCodec<SolarPanel> CODEC = simpleCodec((properties) -> new SolarPanel());
+	public static final DirectionProperty FACING = BlockStateProperties.FACING;
 
-    public SolarPanel() {
-        super(Properties.ofFullCopy(Blocks.GLASS));
-    }
+	public SolarPanel() {
+		super(Properties.ofFullCopy(Blocks.GLASS));
+	}
 
 
-    @Override
-    protected RenderShape getRenderShape(BlockState pState) {
-        return RenderShape.MODEL;
-    }
+	@Override
+	protected RenderShape getRenderShape(BlockState pState) {
+		return RenderShape.MODEL;
+	}
 
-    @Override
-    protected VoxelShape getVisualShape(BlockState pState, BlockGetter pReader, BlockPos pPos, CollisionContext pContext) {
-        return Shapes.empty();
-    }
+	@Override
+	protected VoxelShape getVisualShape(BlockState pState, BlockGetter pReader, BlockPos pPos, CollisionContext pContext) {
+		return Shapes.empty();
+	}
 
-    @Override
-    protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return Shapes.block();
-    }
+	@Override
+	protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+		return Shapes.block();
+	}
 
-    @Nullable
-    @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {return null;
-    }
+	@Nullable
+	@Override
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {return null;
+	}
 
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        return CODEC;
-    }
+	@Override
+	protected MapCodec<? extends BaseEntityBlock> codec() {
+		return CODEC;
+	}
 
 }
