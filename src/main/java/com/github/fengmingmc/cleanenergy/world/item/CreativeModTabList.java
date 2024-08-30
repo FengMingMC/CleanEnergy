@@ -15,7 +15,6 @@ public class CreativeModTabList {
             .title(Component.translatable("itemGroup.cleanenergy"))
             .icon(() -> ItemList.SOLAR_PANEL.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(ItemList.TESTING_BLOCK.get());
                 output.accept(BlockList.SOLAR_PANEL.get());
             }).build()
     );
