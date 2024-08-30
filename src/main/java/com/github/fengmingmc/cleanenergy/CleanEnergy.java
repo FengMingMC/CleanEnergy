@@ -3,6 +3,7 @@ package com.github.fengmingmc.cleanenergy;
 import com.github.fengmingmc.cleanenergy.world.item.CreativeModTabList;
 import com.github.fengmingmc.cleanenergy.world.item.ItemList;
 import com.github.fengmingmc.cleanenergy.world.level.block.BlockList;
+import com.github.fengmingmc.cleanenergy.world.level.block.entity.BlockEntityTypeList;
 import com.mojang.logging.LogUtils;
 import net.industrybase.api.IndustryBaseApi;
 import net.minecraft.world.item.CreativeModeTab;
@@ -22,6 +23,7 @@ public class CleanEnergy {
 
 	public CleanEnergy(IEventBus modEventBus, ModContainer modContainer) {
 		BlockList.BLOCK.register(modEventBus);
+		BlockEntityTypeList.BLOCK_ENTITY_TYPE.register(modEventBus);
 		ItemList.ITEM.register(modEventBus);
 		CreativeModTabList.CREATIVE_MODE_TABS.register(modEventBus);
 

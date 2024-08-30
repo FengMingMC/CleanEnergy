@@ -1,14 +1,18 @@
 package com.github.fengmingmc.cleanenergy.world.level.block;
 
+import com.github.fengmingmc.cleanenergy.world.level.block.entity.BlockEntityTypeList;
 import com.github.fengmingmc.cleanenergy.world.level.block.entity.SolarPanelBlockEntity;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -32,6 +36,10 @@ public class SolarPanelBlock extends BaseEntityBlock {
 		super(Properties.ofFullCopy(Blocks.IRON_BLOCK)); // 铁做的底座
 	}
 
+	@Nullable
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> serverType) {
+		return level.isClientSide ? null : createTickerHelper(serverType, BlockEntityTypeList.SOLAR_PANEL.get(), SolarPanelBlockEntity::serverTick);
+	}
 
 	@Override
 	protected RenderShape getRenderShape(BlockState pState) {
@@ -62,5 +70,4 @@ public class SolarPanelBlock extends BaseEntityBlock {
 		// 依葫芦画瓢就是了
 		return CODEC;
 	}
-
 }
