@@ -7,7 +7,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.Mth;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -35,13 +37,28 @@ public class SolarPanelBlockEntity extends BlockEntity {
 
 	/**
 	 * 在 {@link SolarPanelBlock#getTicker} 中引用这个方法后，服务端每个 tick（0.05s）就会调用一次这个方法
-	 * @param level 执行 tick 时，方块所在存档
-	 * @param pos 方块坐标
-	 * @param state 方块状态
+	 *
+	 * @param level       执行 tick 时，方块所在存档
+	 * @param pos         方块坐标
+	 * @param state       方块状态
 	 * @param blockEntity 执行 tick 时的方块实体（就是这个 SolarPanelBlockEntity）
 	 */
 	public static void serverTick(Level level, BlockPos pos, BlockState state, SolarPanelBlockEntity blockEntity) {
-		// TODO 通过 level 获取存档的时间，然后计算此时应当输出的能量
+		// 参考阳光传感器的
+		if (level.getGameTime() % 20L == 0L) { // 每 20tick 执行一次，避免计算太频繁影响性能
+			int brightness = level.getBrightness(LightLayer.SKY, pos) - level.getSkyDarken(); // 获取亮度
+			float sunAngle = level.getSunAngle(1.0F); // 太阳高度角，1.0F 啥意思等你搞渲染时自然会懂
+			if (brightness > 0) { // 亮度大于 0 时
+				// 这里面我也不知道在干嘛，总之就是计算
+				brightness = Math.round(brightness * Mth.cos(sunAngle));
+			}
+			int power = Mth.clamp(brightness, 0, 15); // 将亮度值直接作为输出能量，并限制在 0~15 之间
+			if (power != blockEntity.oldPower) { // 仅在能量与先前记录能量不同（即发生了变化）时才更新
+				blockEntity.oldPower = power; // 更新记录的能量
+				blockEntity.electricPower.setOutputPower(power); // 更新输出能量
+			}
+		}
+
 	}
 
 	/**
@@ -69,7 +86,8 @@ public class SolarPanelBlockEntity extends BlockEntity {
 
 	/**
 	 * 读取 NBT 时调用，从传入的 tag 中读取 NBT 数据，然后加载到 BlockEntity 中
-	 * @param tag 由 MC 从硬盘读取，然后传入的 NBT 数据
+	 *
+	 * @param tag        由 MC 从硬盘读取，然后传入的 NBT 数据
 	 * @param registries 不知道干啥用的
 	 */
 	@Override
@@ -81,7 +99,8 @@ public class SolarPanelBlockEntity extends BlockEntity {
 
 	/**
 	 * 保存 NBT 时调用，将 BlockEntity 的数据保存到传入的 tag 中
-	 * @param tag 传入的 tag
+	 *
+	 * @param tag        传入的 tag
 	 * @param registries 不知道干啥用的
 	 */
 	@Override
