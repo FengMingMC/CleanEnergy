@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+	"#": {
+	  "item": "minecraft:lapis_lazuli"
+	},
+	"@": {
+	  "item": "minecraft:iron_ingot"
+	},
+	"$": {
+	  "item": "minecraft:iron_block"
+	}
+  },
+  "pattern": [
+	"###",
+	" @ ",
+	"$$$"
+  ],
+  "result": {
+	"id": "cleanenergy:solar_panel",
+	"count": 1
+  }
+}
