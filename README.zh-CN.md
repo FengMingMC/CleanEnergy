@@ -5,15 +5,15 @@
 [//]: # ([![Build]&#40;https://github.com/BinZhengStudio/IndustryBase/actions/workflows/build-and-release.yml/badge.svg&#41;]&#40;https://github.com/FengMingMC/CleanEnergy/actions/workflows/build-and-release.yml&#41;)
 [//]: # ([![Sync]&#40;https://github.com/BinZhengStudio/IndustryBase/actions/workflows/gitee-sync.yml/badge.svg&#41;]&#40;https://github.com/FengMingMC/CleanEnergy/actions/workflows/gitee-sync.yml&#41;)
 
-**English (en-US)** | [简体中文 (zh-CN)](/README.zh-CN.md)
+[English (en-US)](/README.md) | **简体中文 (zh-CN)**
 
-This is a simple mod to provide clean energy in minecraft.
+这是一个为《我的世界》提供清洁能源的模组。
 
-It needs IndustryBase as its front mod.
+需要《工业基石》(IndustryBase)作为前置模组。
 
-This mod was created with creator's learning,so it is simple and useless.
+本模组在作者的学习过程中不断开发，所以非常简陋（
 
-At least for now...
+至少现在是这样
 
 ## Screenshots
 
@@ -21,6 +21,6 @@ At least for now...
 
 ## Links
 
-[//]: # ([Introduction on mcmod.cn]&#40;https://www.mcmod.cn/class/10791.html&#41;)
+[//]: # ([在McMod上的介绍]&#40;https://www.mcmod.cn/class/10791.html&#41;)
 
 ## Introductions
