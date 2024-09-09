@@ -5,7 +5,6 @@ import com.github.fengmingmc.cleanenergy.world.level.block.BlockList;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -16,6 +15,8 @@ public class CreativeModTabList {
             .icon(() -> ItemList.SOLAR_PANEL.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
                 output.accept(BlockList.SOLAR_PANEL.get());
+                output.accept(ItemList.SILICON_INGOT.get());
+                output.accept(ItemList.SOLAR_PANEL_TOP.get());
             }).build()
     );
 }
