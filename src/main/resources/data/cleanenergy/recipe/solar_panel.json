@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
 	"#": {
-	  "item": "minecraft:lapis_lazuli"
+	  "item": "cleanenergy:solar_panel_top"
 	},
 	"@": {
 	  "item": "minecraft:iron_ingot"
