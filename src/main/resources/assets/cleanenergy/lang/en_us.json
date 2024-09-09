@@ -1,6 +1,8 @@
 {
   "itemGroup.cleanenergy": "CleanEnergy",
 
+  "item.cleanenergy.silicon_ingot": "Silicon Ingot",
+  "item.cleanenergy.solar_panel_top": "Solar Panel",
 
-  "block.cleanenergy.solar_panel":"Solar Panel"
+  "block.cleanenergy.solar_panel":"Solar Generator"
 }

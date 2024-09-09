@@ -1,6 +1,8 @@
 {
   "itemGroup.cleanenergy": "清潔能源",
 
+  "item.cleanenergy.silicon_ingot": "硅錠",
+  "item.cleanenergy.solar_panel_top": "太陽能電池板",
 
-  "block.cleanenergy.solar_panel":"太陽能電池板"
+  "block.cleanenergy.solar_panel":"太陽能發電機"
 }
