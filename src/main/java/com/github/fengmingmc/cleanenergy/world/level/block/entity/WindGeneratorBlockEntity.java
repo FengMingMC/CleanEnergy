@@ -1,5 +1,6 @@
 package com.github.fengmingmc.cleanenergy.world.level.block.entity;
 
+import com.github.fengmingmc.cleanenergy.world.level.block.WindGeneratorBlock;
 import net.industrybase.api.electric.ElectricPower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -41,7 +42,7 @@ public class WindGeneratorBlockEntity extends BlockEntity {
 
     @Nullable
     public ElectricPower getElectricPower(Direction side) {
-        if (side == Direction.SOUTH) { // 选择侧面输出
+        if (side == this.getBlockState().getValue(WindGeneratorBlock.FACING).getOpposite()) { // 选择侧面输出
             // 如果请求的方向正确，则返回对应的 EP
             return this.electricPower;
         }
