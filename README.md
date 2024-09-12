@@ -21,6 +21,6 @@ At least for now...
 
 ## Links
 
-[//]: # ([Introduction on mcmod.cn]&#40;https://www.mcmod.cn/class/10791.html&#41;)
+[Introduction on mcmod.cn](https://www.mcmod.cn/class/16473.html)
 
 ## Introductions

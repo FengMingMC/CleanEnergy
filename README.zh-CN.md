@@ -21,6 +21,6 @@
 
 ## Links
 
-[//]: # ([在McMod上的介绍]&#40;https://www.mcmod.cn/class/10791.html&#41;)
+[在McMod上的介绍](https://www.mcmod.cn/class/16473.html)
 
 ## Introductions
