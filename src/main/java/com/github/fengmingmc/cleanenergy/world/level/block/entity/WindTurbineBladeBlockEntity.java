@@ -25,10 +25,10 @@ public class WindTurbineBladeBlockEntity extends BlockEntity {
 		super.onLoad();
 		this.transmit.register(); // 通过 EP 管理器，向 EP 能量网络注册这个方块
 		this.transmit.setResistance(5);
-		int height = this.worldPosition.getY();
+		int height = this.worldPosition.getY() - 64;
 		if (height > 0) {
 			int power = height / 8;
-			int windPower = Mth.clamp(power,1,8);
+			int windPower = Mth.clamp(power,1,2);
 			this.transmit.setPower(windPower); // 更新输出能量
 		}
 	}

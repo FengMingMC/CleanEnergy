@@ -5,7 +5,6 @@ import com.github.fengmingmc.cleanenergy.world.level.block.entity.WindTurbineBla
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.industrybase.api.network.client.SubscribeSpeedPacket;
-import net.industrybase.api.transmit.TransmissionRodBlockEntity;
 import net.industrybase.api.transmit.TransmitNetwork;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -15,10 +14,12 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 public class WindTurbineBladeRenderer implements BlockEntityRenderer<WindTurbineBladeBlockEntity> {
@@ -36,20 +37,32 @@ public class WindTurbineBladeRenderer implements BlockEntityRenderer<WindTurbine
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
 		PartDefinition main = partdefinition.addOrReplaceChild("main", CubeListBuilder.create().texOffs(110, 0).addBox(-3.0F, -3.0F, 5.0F, 6.0F, 6.0F, 3.0F, new CubeDeformation(0.0F))
-				.texOffs(0, 0).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 9.0F, new CubeDeformation(0.0F))
-				.texOffs(114, 121).addBox(-3.0F, -3.0F, -5.0F, 6.0F, 6.0F, 1.0F, new CubeDeformation(0.0F))
-				.texOffs(118, 116).addBox(-2.0F, -2.0F, -6.0F, 4.0F, 4.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.ZERO);
+				.texOffs(0, 0).addBox(-5.0F, -5.0F, -4.0F, 10.0F, 10.0F, 9.0F, new CubeDeformation(0.0F))
+				.texOffs(110, 119).addBox(-4.0F, -4.0F, -5.0F, 8.0F, 8.0F, 1.0F, new CubeDeformation(0.0F))
+				.texOffs(114, 112).addBox(-3.0F, -3.0F, -6.0F, 6.0F, 6.0F, 1.0F, new CubeDeformation(0.0F))
+				.texOffs(118, 107).addBox(-2.0F, -2.0F, -7.0F, 4.0F, 4.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.ZERO);
 
-		PartDefinition blade1 = main.addOrReplaceChild("blade1", CubeListBuilder.create().texOffs(0, 50).addBox(-1.0F, 26.0F, -2.0F, 2.0F, 24.0F, 5.0F, new CubeDeformation(0.0F))
-				.texOffs(0, 98).addBox(-2.0F, 3.0F, -3.0F, 4.0F, 23.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+		PartDefinition blade_top = main.addOrReplaceChild("blade_top", CubeListBuilder.create().texOffs(22, 75).addBox(-1.0F, 52.0F, -2.0F, 2.0F, 48.0F, 5.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 73).addBox(-2.0F, 4.0F, -3.0F, 4.0F, 48.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 
-		PartDefinition blade2 = main.addOrReplaceChild("blade2", CubeListBuilder.create().texOffs(0, 50).addBox(-1.0F, 26.0F, -2.0F, 2.0F, 24.0F, 5.0F, new CubeDeformation(0.0F))
-				.texOffs(0, 98).addBox(-2.0F, 3.0F, -3.0F, 4.0F, 23.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2.0944F));
+		PartDefinition blade_left = main.addOrReplaceChild("blade_left", CubeListBuilder.create().texOffs(22, 75).addBox(-1.0F, 52.0F, -2.0F, 2.0F, 48.0F, 5.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 73).addBox(-2.0F, 4.0F, -3.0F, 4.0F, 48.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2.0944F));
 
-		PartDefinition blade3 = main.addOrReplaceChild("blade3", CubeListBuilder.create().texOffs(0, 50).addBox(-1.0F, 26.0F, -2.0F, 2.0F, 24.0F, 5.0F, new CubeDeformation(0.0F))
-				.texOffs(0, 98).addBox(-2.0F, 3.0F, -3.0F, 4.0F, 23.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, -2.0944F));
+		PartDefinition blade_right = main.addOrReplaceChild("blade_right", CubeListBuilder.create().texOffs(22, 75).addBox(-1.0F, 52.0F, -2.0F, 2.0F, 48.0F, 5.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 73).addBox(-2.0F, 4.0F, -3.0F, 4.0F, 48.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, -2.0944F));
 
 		return LayerDefinition.create(meshdefinition, 128, 128);
+	}
+
+	@Override
+	public int getViewDistance() {
+		return 256;
+	}
+
+	@Override
+	public AABB getRenderBoundingBox(WindTurbineBladeBlockEntity blockEntity) {
+		BlockPos pos = blockEntity.getBlockPos();
+		return new AABB(pos.offset(-256, -256, -256).getCenter(), pos.offset(256, 256, 256).getCenter());
 	}
 
 	@Override
