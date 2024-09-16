@@ -17,7 +17,7 @@
 	"###"
   ],
   "result": {
-	"id": "cleanenergy:wind_generator",
+	"id": "cleanenergy:wind_turbine_blade",
 	"count": 1
   }
 }

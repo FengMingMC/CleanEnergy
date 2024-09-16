@@ -6,5 +6,5 @@
   "item.cleanenergy.fan": "Fan",
 
   "block.cleanenergy.solar_panel":"Solar Generator",
-  "block.cleanenergy.wind_generator":"Wind Generator"
+  "block.cleanenergy.wind_turbine_blade":"Wind Turbine Blade"
 }

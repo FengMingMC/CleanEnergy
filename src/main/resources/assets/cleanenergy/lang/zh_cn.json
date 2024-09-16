@@ -6,5 +6,5 @@
   "item.cleanenergy.fan": "风扇",
 
   "block.cleanenergy.solar_panel":"太阳能发电机",
-  "block.cleanenergy.wind_generator":"风力发电机"
+  "block.cleanenergy.wind_turbine_blade":"风力发电机叶片"
 }

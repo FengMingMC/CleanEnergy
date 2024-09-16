@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-	"cleanenergy:solar_panel"
+    "cleanenergy:wind_turbine_blade"
   ]
 }

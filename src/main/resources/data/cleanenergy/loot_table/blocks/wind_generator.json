@@ -11,11 +11,11 @@
 	  "entries": [
 		{
 		  "type": "minecraft:item",
-		  "name": "cleanenergy:wind_generator"
+		  "name": "cleanenergy:wind_turbine_blade"
 		}
 	  ],
 	  "rolls": 1.0
 	}
   ],
-  "random_sequence": "cleanenergy:blocks/wind_generator"
+  "random_sequence": "cleanenergy:blocks/wind_turbine_blade"
 }
