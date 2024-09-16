@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+	"@": {
+	  "item": "minecraft:iron_ingot"
+	},
+	"#": {
+	  "item": "minecraft:iron_block"
+	},
+	"$": {
+	  "item": "cleanenergy:fan"
+	}
+  },
+  "pattern": [
+	" $ ",
+	" @ ",
+	"###"
+  ],
+  "result": {
+	"id": "cleanenergy:wind_generator",
+	"count": 1
+  }
+}
