@@ -9,7 +9,7 @@ public class BlockList {
 	public static final DeferredRegister.Blocks BLOCK = DeferredRegister.createBlocks(CleanEnergy.MODID);
 
 	public static final DeferredBlock<Block> SOLAR_PANEL = BLOCK.register("solar_panel", SolarPanelBlock::new);
-	public static final DeferredBlock<Block> WIND_GENERATOR = BLOCK.register("wind_generator", WindGeneratorBlock::new);
+	public static final DeferredBlock<Block> WIND_TURBINE_BLADE = BLOCK.register("wind_turbine_blade", WindTurbineBladeBlock::new);
 
 	private BlockList() {
 	}

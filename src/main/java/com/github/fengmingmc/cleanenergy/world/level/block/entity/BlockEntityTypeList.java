@@ -14,7 +14,7 @@ public class BlockEntityTypeList {
 	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPE = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, CleanEnergy.MODID);
 
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SolarPanelBlockEntity>> SOLAR_PANEL = register("solar_panel", SolarPanelBlockEntity::new, BlockList.SOLAR_PANEL);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WindGeneratorBlockEntity>> WIND_GENERATOR = register("wind_generator", WindGeneratorBlockEntity::new, BlockList.WIND_GENERATOR);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WindTurbineBladeBlockEntity>> WIND_TURBINE_BLADE = register("wind_turbine_blade", WindTurbineBladeBlockEntity::new, BlockList.WIND_TURBINE_BLADE);
 
 	private static <T extends BlockEntity> DeferredHolder<BlockEntityType<?>, BlockEntityType<T>> register(String name, BlockEntityType.BlockEntitySupplier<T> blockEntity, DeferredHolder<Block, ? extends Block> block) {
 		return BLOCK_ENTITY_TYPE.register(name, () -> BlockEntityType.Builder.of(blockEntity, block.get()).build(DSL.remainderType()));

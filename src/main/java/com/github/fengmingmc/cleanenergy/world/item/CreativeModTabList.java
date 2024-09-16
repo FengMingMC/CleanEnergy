@@ -18,8 +18,8 @@ public class CreativeModTabList {
                 output.accept(ItemList.SOLAR_PANEL_TOP.get());
                 output.accept(ItemList.FAN.get());
 
-                output.accept(BlockList.SOLAR_PANEL.get());
-                output.accept(BlockList.WIND_GENERATOR.get());
+                output.accept(ItemList.SOLAR_PANEL.get());
+                output.accept(ItemList.WIND_TURBINE_BLADE.get());
             }).build()
     );
 }
