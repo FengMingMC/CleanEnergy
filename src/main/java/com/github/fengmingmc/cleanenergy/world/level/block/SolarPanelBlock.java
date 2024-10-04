@@ -14,6 +14,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -70,4 +72,25 @@ public class SolarPanelBlock extends BaseEntityBlock {
 		// 依葫芦画瓢就是了
 		return CODEC;
 	}
+
+	public boolean hasBlockEntity(BlockState state) {
+		return true;
+	}
+
+	public BlockEntity newBlockENtity(BlockPos pos, BlockState state) {
+		return new SolarPanelBlockEntity(pos, state);
+	}
+
+	public static final EnumProperty<ModelType> MODEL = EnumProperty.create("model",ModleType.class);
+
+	public SolarPanelBlock(Properties properties) {
+		super(properties) ;
+		this.registerDefaultState(this.stateDefinition.any().setValue(MODEL, ModelType.MIDDAYORNIGHT));
+	}
+
+
+	protected void createBlockStateDefinition (StateDefinition.Builder<Block,Block> builder) {
+		builder.add(MODEL);
+	}
+
 }

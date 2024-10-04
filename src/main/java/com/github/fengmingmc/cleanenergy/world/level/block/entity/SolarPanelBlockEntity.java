@@ -11,17 +11,38 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
-public class SolarPanelBlockEntity extends BlockEntity {
+public class SolarPanelBlockEntity extends BlockEntity implements TickableBlockEntity {
 	// 模仿 InB 的其他方块，在这里创建一个 EP 管理器
 	private final ElectricPower electricPower = new ElectricPower(this);
 	private double oldPower;
 
 	public SolarPanelBlockEntity(BlockPos pPos, BlockState pBlockState) {
 		super(BlockEntityTypeList.SOLAR_PANEL.get(), pPos, pBlockState);
+	}
+
+	@Override
+	public void tick() {
+		if (this.level != null && !this.level.isClientSide) {
+			long time = this.level.getDayTime() % 24000;// 获取当前的时间
+			BlockState state = this.getBlockState();
+
+			if (time >= 0 && time < 2500) {
+				this.level.setBlock(this.worldPosition,state.setValue(SolarPanelBlock.MODEL,ModleType.MORNING), 3);
+			}else if (time >= 2500 && time < 5000) {
+				this.level.setBlock(this.worldPosition,state.setValue(SolarPanelBlock.MODEL,ModelType.LATEMORNING), 3);
+			}else if (time >= 5000 && time < 7000) {
+				this.level.setBlock(this.worldPosition,state.setValue(SolarPanelBlock.MODEL,ModleType.MIDDAYORNIGHT), 3);
+			}else if (time >= 7000 && time < 9500) {
+				this.level.setBlock(this.worldPosition,state.setValue(SolarPanelBlock.MODEL,ModleType.NOON), 3);
+			}else if (time >= 9500 && time < 12000) {
+				this.level.setBlock(this.worldPosition,state.setValue(SolarPanelBlock.MODEL,ModleType.LATENOON), 3)
+			}
+		}
 	}
 
 	/**
@@ -34,6 +55,7 @@ public class SolarPanelBlockEntity extends BlockEntity {
 		super.onLoad();
 		this.electricPower.register(); // 通过 EP 管理器，向 EP 能量网络注册这个方块
 	}
+
 
 	/**
 	 * 在 {@link SolarPanelBlock#getTicker} 中引用这个方法后，服务端每个 tick（0.05s）就会调用一次这个方法
@@ -109,4 +131,7 @@ public class SolarPanelBlockEntity extends BlockEntity {
 		tag.putDouble("OldPower", this.oldPower); // 把 OldPower 的数值保存起来
 		this.electricPower.writeToNBT(tag); // EP 的能量数据由 EP 管理器负责
 	}
+
+
+
 }
