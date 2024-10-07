@@ -1,6 +1,7 @@
 package com.github.fengmingmc.cleanenergy.world.level.block.entity;
 
 import com.github.fengmingmc.cleanenergy.event.handler.BlockCapabilityRegister;
+import com.github.fengmingmc.cleanenergy.world.level.block.BlockList;
 import com.github.fengmingmc.cleanenergy.world.level.block.SolarPanelBlock;
 import net.industrybase.api.electric.ElectricPower;
 import net.minecraft.core.BlockPos;
@@ -8,10 +9,15 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.monster.warden.AngerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+
 
 import javax.annotation.Nullable;
 
@@ -19,6 +25,12 @@ public class SolarPanelBlockEntity extends BlockEntity {
 	// 模仿 InB 的其他方块，在这里创建一个 EP 管理器
 	private final ElectricPower electricPower = new ElectricPower(this);
 	private double oldPower;
+
+//	public static IntegerProperty ANGLE = BlockStateProperties.AGE_5;
+//	public static final IntegerProperty ANGLE_1 = BlockStateProperties.AGE_1;
+//	public static final IntegerProperty ANGLE_2 = BlockStateProperties.AGE_2;
+//	public static final IntegerProperty ANGLE_3 = BlockStateProperties.AGE_3;
+//	public static final IntegerProperty ANGLE_4 = BlockStateProperties.AGE_4;
 
 	public SolarPanelBlockEntity(BlockPos pPos, BlockState pBlockState) {
 		super(BlockEntityTypeList.SOLAR_PANEL.get(), pPos, pBlockState);
@@ -58,7 +70,20 @@ public class SolarPanelBlockEntity extends BlockEntity {
 				blockEntity.electricPower.setOutputPower(power); // 更新输出能量
 			}
 		}
-
+		if (level.getGameTime() % 20L == 0L) {
+			long dayTime = level.getDayTime() % 24000 ;
+			if (dayTime >= 0 && dayTime < 2500) {
+				level.setBlock(pos, state.setValue(SolarPanelBlock.ANGEL,1),3);
+			}else if (dayTime >= 2500 && dayTime < 5000) {
+				level.setBlock(pos, state.setValue(SolarPanelBlock.ANGEL,2),3);
+			}else if (dayTime >= 7000 && dayTime < 9500) {
+				level.setBlock(pos, state.setValue(SolarPanelBlock.ANGEL,3),3);
+			}else if (dayTime >= 9500 && dayTime <= 12000) {
+				level.setBlock(pos, state.setValue(SolarPanelBlock.ANGEL,4),3);
+			}else {
+				level.setBlock(pos, state.setValue(SolarPanelBlock.ANGEL,5),3);
+			}
+		}
 	}
 
 	/**

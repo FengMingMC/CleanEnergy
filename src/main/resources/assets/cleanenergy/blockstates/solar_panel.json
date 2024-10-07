@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "age=5":{
       "model": "cleanenergy:block/solar_panel"
+    },
+    "age=1":{
+      "model": "cleanenergy:block/solar_panel_1"
+    },
+    "age=2":{
+      "model": "cleanenergy:block/solar_panel_2"
+    },
+    "age=3":{
+      "model": "cleanenergy:block/solar_panel_3"
+    },
+    "age=4":{
+      "model": "cleanenergy:block/solar_panel_4"
     }
   }
 }

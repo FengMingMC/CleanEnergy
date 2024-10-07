@@ -14,6 +14,10 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -31,6 +35,16 @@ public class SolarPanelBlock extends BaseEntityBlock {
 	private static final VoxelShape PANEL = Block.box(-8.0D, 13.0D, -8.0D, 24.0D, 14.0D, 24.0D);
 	// 将棍子、板子、基座组合起来
 	private static final VoxelShape SHAPE = Shapes.or(PEDESTAL, STICK, PANEL);
+
+
+
+	public static final IntegerProperty ANGEL = BlockStateProperties.AGE_5;
+
+
+	@Override
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+		builder.add(ANGEL);
+	}
 
 	public SolarPanelBlock() {
 		super(Properties.ofFullCopy(Blocks.IRON_BLOCK)); // 铁做的底座
@@ -66,8 +80,12 @@ public class SolarPanelBlock extends BaseEntityBlock {
 	@Override
 	protected MapCodec<? extends BaseEntityBlock> codec() {
 		// 这个好像是 1.20.4 加入的，作用不明
-		// 估计是 bugjang 招了个 codec 仙人
+		// 估计是 bugJump 招了个 codec 仙人
 		// 依葫芦画瓢就是了
 		return CODEC;
 	}
+
+
+
+
 }
