@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "cleanenergy:item/wind_turbine_blade"
+  }
+}

@@ -3,8 +3,8 @@
 
   "item.cleanenergy.silicon_ingot": "Silicon Ingot",
   "item.cleanenergy.solar_panel_top": "Solar Panel",
-  "item.cleanenergy.fan": "Fan",
+  "item.cleanenergy.fan": "Fan Blade",
 
   "block.cleanenergy.solar_panel":"Solar Generator",
-  "block.cleanenergy.wind_turbine_blade":"Wind Turbine Blade"
+  "block.cleanenergy.wind_turbine_blade":"Wind Turbine"
 }
